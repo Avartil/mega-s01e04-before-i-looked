@@ -16,6 +16,9 @@ const css = `
   th { color: var(--mute); font-weight: normal; }
   .warn { color: var(--warn); }
   .mute { color: var(--mute); }
+  .table-scroll { overflow-x: auto; }
+  .digest-table { min-width: 76rem; }
+  .digest-error { max-width: 24rem; overflow-wrap: anywhere; white-space: pre-wrap; }
 `;
 
 export function Layout(props: { title: string; lane: Lane; children: Child }) {
