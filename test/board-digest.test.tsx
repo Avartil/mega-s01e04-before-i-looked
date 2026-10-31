@@ -20,13 +20,13 @@ describe('status board digest links', () => {
   it('links every night and shows counts of valid events by status', async () => {
     const runsDir = makeRunsDir();
     writeFileSync(join(runsDir, '2026-10-27.jsonl'), [
-      '{"at":"2026-10-27T00:00:00+01:00","job":"a","status":"ok"}',
-      '{"at":"2026-10-27T00:01:00+01:00","job":"a","status":"retry"}',
-      '{"at":"2026-10-27T00:02:00+01:00","job":"a","status":"fail"}',
+      '{"at":"2026-10-27T00:00:00+01:00","job":"a","status":"ok","owner":"rook"}',
+      '{"at":"2026-10-27T00:01:00+01:00","job":"a","status":"retry","owner":"rook"}',
+      '{"at":"2026-10-27T00:02:00+01:00","job":"a","status":"fail","owner":"rook"}',
       '{ bad json',
     ].join('\n'));
     writeFileSync(join(runsDir, '2026-10-28.jsonl'),
-      '{"at":"2026-10-28T00:00:00+01:00","job":"b","status":"ok"}\n');
+      '{"at":"2026-10-28T00:00:00+01:00","job":"b","status":"ok","owner":null}\n');
     const config = { adapter: 'shim', installed: '2026-10-29T14:06:00+01:00', beatEverySeconds: 60, runsDir };
 
     const res = await createApp(config).request('/');
