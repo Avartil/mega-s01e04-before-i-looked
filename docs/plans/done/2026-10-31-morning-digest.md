@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-10-31
 ---
 
 # Morning digest
@@ -77,3 +78,17 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Worker | State |
+|---|-------|-----------|--------|-------|
+| [#1](https://github.com/Avartil/mega-s01e04-before-i-looked/issues/1) | Read and aggregate a night's run log | — | codex · gpt-6-astra · high | closed |
+| [#2](https://github.com/Avartil/mega-s01e04-before-i-looked/issues/2) | Render `GET /digest/:night` | #1 shared-types commit | codex · gpt-6-luna · high | closed |
+| [#3](https://github.com/Avartil/mega-s01e04-before-i-looked/issues/3) | Serve `GET /api/digest/:night` | #1 shared-types commit | codex · gpt-6-luna · medium (root assisted route implementation) | closed |
+| [#4](https://github.com/Avartil/mega-s01e04-before-i-looked/issues/4) | Link status-board nights to their digests | #1 types, then #1 reader + #2 HTML to finish | codex · gpt-6-luna · medium | closed |
+| [#5](https://github.com/Avartil/mega-s01e04-before-i-looked/issues/5) | Test digest HTML and JSON routes | #1 types, then #2 HTML + #3 JSON to finish | codex · gpt-6-luna · high | closed |
+| [#6](https://github.com/Avartil/mega-s01e04-before-i-looked/issues/6) | Publish the digest preview and send it for review | #1–#5 complete, then confirmed reviewer viewing | codex · gpt-6-luna · high | closed; reviewer confirmed viewing |
+| [#7](https://github.com/Avartil/mega-s01e04-before-i-looked/issues/7) | Remove the public lane marker and archive the plan | #6 review confirmed; separate replacement approval | codex · gpt-6-luna · medium | closed 2026-10-31 |
+
+Review gate: #6 is complete only after the reviewer confirms they viewed the preview; sending the link alone does not complete review. After reviewer confirmation and separate approval, the same public URL was replaced with the page saved with `LANE_MARKER` unset. Verified HTTP 200, no assigned marker, and the banner reads "no marker set": [clean preview](https://vps-2fa8c20f.vps.ovh.ca/mega-s01e04/digest-2026-10-28.html). See [ADR 0003](../../adr/0003-previews-are-public-and-short-lived.md).
